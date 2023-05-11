@@ -44,6 +44,12 @@ def reaction(a_mole_ratio, b_mole_ratio, c_mole_ratio):
     bing.append(i)
     i += 1
 
+  if after_a_mole == 0 and after_b_mole > 0:
+    limiting_reactant = "A"
+  elif after_b_mole == 0 and after_a_mole > 0:
+    limiting_reactant = "B"
+  else:
+    limiting_reactant = "A and B"
   print("몰비: ", a_mole_ratio, b_mole_ratio, c_mole_ratio)
   print("한계반응물: ", limiting_reactant)
   print("반응 후 A의 양:", after_a_mole)
