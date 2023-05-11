@@ -17,19 +17,16 @@ def reaction(a_mole_ratio, b_mole_ratio, c_mole_ratio):
   #한계반응물 찾고 반응후 몰수 구하기()
   while i <= b_mole:
     if(a_mole / a_mole_ratio > i / b_mole_ratio):
-      limiting_reactant = "B"
       after_a_mole = a_mole - (i / b_mole_ratio) * a_mole_ratio
       after_b_mole = 0
       cm = (i / b_mole_ratio) * c_mole_ratio
       total_calculate = cm + after_a_mole
     elif(a_mole / a_mole_ratio < i / b_mole_ratio):
-      limiting_reactant = "A"
       after_b_mole = i - (a_mole / a_mole_ratio) * b_mole_ratio
       after_a_mole = 0
       cm = (a_mole / a_mole_ratio) *  c_mole_ratio
       total_calculate = cm + after_b_mole
     else:
-      limiting_reactant = "A and B"
       cm = (a_mole / a_mole_ratio) * c_mole_ratio
       after_a_mole = 0
       after_b_mole = 0
