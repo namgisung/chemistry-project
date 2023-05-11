@@ -66,9 +66,19 @@ def reaction(a_mole_ratio, b_mole_ratio, c_mole_ratio):
 
   # 그래프 보여주기
   plt.show()
+  
+#반응 전과 후 전체 양(mol)으로 반응 후 C의 양 구하기
+def total_whole_mole(a_mole_ratio,b_mole_ratio,c_mole_ratio):
+  total_modulus_change = c_mole_ratio - (a_mole_ratio+b_mole_ratio)
+  total_moles_before_reaction = float(input("반응 전 전체 양(mol):"))
+  total_moles_after_reaction = float(input("반응 후 전체 양(mol):"))
+  total_moles_change = total_moles_after_reaction - total_moles_before_reaction
+  c_mole2 = c_mole_ratio * (total_moles_change / total_modulus_change)
+  print("반응 후 C의 양:", c_mole2)
 
 #화학반응식 입력받기
 ce = input("화학반응식을 입력하세요(_A+_B->_C):")
+q = float(input("제시된 자료를 숫자로 입력하세요(반응 전 A와 B의 양(1), 반응 전과 후 전체 양(2))"))
 
 #화학반응식 개수비 찾기
 re = ce.split("->")[0]
@@ -79,4 +89,7 @@ a_mole_ratio = int(re1.split("A")[0])
 b_mole_ratio = int(re2.split("B")[0])
 c_mole_ratio = int(pr.split("C")[0])
 
-reaction(a_mole_ratio,b_mole_ratio,c_mole_ratio)
+if q == 1:
+  reaction(a_mole_ratio,b_mole_ratio,c_mole_ratio)
+elif q ==2:
+  total_whole_mole(a_mole_ratio,b_mole_ratio,c_mole_ratio)
