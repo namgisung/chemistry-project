@@ -184,45 +184,52 @@ b_th = 0
 c_th = 0
 d_th = 0
 if a_ratio.count('>') ==3:
-    a_th = 1
+    a_th = 0
 elif a_ratio.count('>') ==2:
-    a_th = 2
+    a_th = 1
 elif a_ratio.count('>') ==1:
-    a_th = 3
+    a_th = 2
 else:
-    a_th = 4
+    a_th = 3
 
 if b_ratio[0] == '<' and b_ratio.count('>') == 2:
-    b_th = 1
+    b_th = 0
 elif b_ratio[0] == '<' and b_ratio.count('>') == 1:
-    b_th = 2
+    b_th = 1
 elif b_ratio[0] == '>' and b_ratio.count('>') == 3:
-    b_th = 2
+    b_th = 1
 elif b_ratio[0] == '<' and b_ratio.count('>') == 0:
-    b_th = 3
+    b_th = 2
 elif b_ratio[0] == '>' and b_ratio.count('>') == 2:
-    b_th = 3
+    b_th = 2
 else:
-    b_th = 4
+    b_th = 3
 
 if c_ratio[2] == '>' and b_ratio.count('<') == 2:
-    c_th = 1
+    c_th = 0
 elif c_ratio[2] == '>' and b_ratio.count('<') == 1:
-    c_th = 2
+    c_th = 1
 elif c_ratio[2] == '<' and b_ratio.count('<') == 3:
-    c_th = 2
+    c_th = 1
 elif c_ratio[2] == '>' and b_ratio.count('<') == 0:
-    c_th = 3
+    c_th = 2
 elif c_ratio[2] == '<' and b_ratio.count('<') == 2:
-    c_th = 3
+    c_th = 2
 else:
-    c_th = 4
+    c_th = 3
 
 if d_ratio.count('<') ==3:
-    d_th = 1
+    d_th = 0
 elif d_ratio.count('<') ==2:
-    d_th = 2
+    d_th = 1
 elif a_ratio.count('<') ==1:
-    d_th = 3
+    d_th = 2
 else:
-    d_th = 4
+    d_th = 3
+
+total_example= list(range(5))
+total_example[a_th] = a
+total_example[b_th] = b
+total_example[c_th] = c
+total_example[d_th] = d
+print(total_example)
