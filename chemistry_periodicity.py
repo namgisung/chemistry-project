@@ -233,4 +233,4 @@ total_example[b_th] = b
 total_example[c_th] = c
 total_example[d_th] = d
 print(total_example)
-print(total_example[0] + ">" + total_example[1] + ">" + total_example[2] + ">" total_example[3])
+print(total_example[0] , ">" , total_example[1] , ">" , total_example[2] , ">" total_example[3])
