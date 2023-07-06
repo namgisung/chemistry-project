@@ -82,29 +82,29 @@ def atomic_radius(a_num,a_period,a_stripe,b_num,b_period,b_stripe):
             inequality_sign = ">"
     elif a_period != b_period and a_stripe != b_stripe:
        if a_period == 1:
-           inequality_sign = “<“
+           inequality_sign = "<"
        elif b_period == 1:
-           inequality_sign = “>”
+           inequality_sign = ">"
        elif 5 <= a_num <= 10:
-           inequality_sign = “<“
+           inequality_sign = "<"
        elif 5 <= b_num <= 10:
-           inequality_sign = “>“
+           inequality_sign = ">"
        elif a_num == 4 and 15 <= b_num <= 18:
-           inequality_sign = “>”
+           inequality_sign = ">"
        elif b_num == 4 and 15 <= a_num <= 18:
-           inequality_sign = “<“
+           inequality_sign = "<"
        elif a_num == 3 and 13 <= b_num <= 14 :
-           inequality_sign = “>”
+           inequality_sign = ">"
        elif b_num == 3 and 13 <= a_num <= 14:
-          inequality_sign = “<“
+          inequality_sign = "<"
        elif a_period ==3 and b_period == 4:
-          inequality_sign = “<“
+          inequality_sign = "<"
        elif b_period ==3 and a_period == 4:
-          inequality_sign = “>“
+          inequality_sign = ">"
        elif a_period == 4:
-          inequality_sign = “>“
+          inequality_sign = ">"
        elif b_period == 4:
-          inequality_sign = “<”
+          inequality_sign = "<"
     return inequality_sign
 
 
