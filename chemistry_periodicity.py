@@ -68,6 +68,49 @@ def stripel(num):
         stripe = num - 18
     return stripe
 
+def atomic_radius(a_num,a_period,a_stripe,b_num,b_period,b_stripe):
+    #원자 반지름
+    if a_period == b_period:
+        if a_num < b_num:
+            inequality_sign = ">"
+        else:
+            inequality_sign = "<"
+    elif a_stripe == b_stripe:
+        if a_num < b_num:
+            inequality_sign = "<"
+        else:
+            inequality_sign = ">"
+    elif a_period != b_period and a_stripe != b_stripe:
+       if a_period == 1:
+           inequality_sign = “<“
+       elif b_period == 1:
+           inequality_sign = “>”
+       elif 5 <= a_num <= 10:
+           inequality_sign = “<“
+       elif 5 <= b_num <= 10:
+           inequality_sign = “>“
+       elif a_num == 4 and 15 <= b_num <= 18:
+           inequality_sign = “>”
+       elif b_num == 4 and 15 <= a_num <= 18:
+           inequality_sign = “<“
+       elif a_num == 3 and 13 <= b_num <= 14 :
+           inequality_sign = “>”
+       elif b_num == 3 and 13 <= a_num <= 14:
+          inequality_sign = “<“
+       elif a_period ==3 and b_period == 4:
+          inequality_sign = “<“
+       elif b_period ==3 and a_period == 4:
+          inequality_sign = “>“
+       elif a_period == 4:
+          inequality_sign = “>“
+       elif b_period == 4:
+          inequality_sign = “<”
+    return inequality_sign
+
+
+       
+
+
 atomic_data = {'H': 1, 'He': 2, 
                'Li': 3, 'Be': 4, 'B': 5, 'C': 6, 'N': 7, 'O': 8,'F': 9, 'Ne': 10,
                'Na': 11, 'Mg': 12, 'Al': 13, 'Si': 14, 'P': 15, 'S': 16, 'Cl': 17, 'Ar': 18,
@@ -112,30 +155,9 @@ for l in Zeff_total:
 Zeff_graph(Z_second,atomic_t)
 
 #원자 반지름
-if a_period == b_period:
-    if a_num < b_num:
-        inequality_sign = ">"
-    else:
-        inequality_sign = "<"
-elif a_stripe == b_stripe:
-    if a_num < b_num:
-        inequality_sign = "<"
-    else:
-        inequality_sign = ">"
-
-print(a)
-print(b)
-print(c)
-print(d)
-print(a_num)
-print(b_num)
-print(c_num)
-print(d_num)
-print(a_period)
-print(b_period)
-print(c_period)
-print(d_period)
-print(a_Zeff)
-print(b_Zeff)
-print(c_Zeff)
-print(d_Zeff)
+a_b = atomic_radius(a_num,a_period,a_stripe,b_num,b_period,b_stripe)
+a_c = atomic_radius(a_num,a_period,a_stripe,c_num,c_period,c_stripe)
+a_d = atomic_radius(a_num,a_period,a_stripe,d_num,d_period,d_stripe)
+b_c = atomic_radius(b_num,b_period,b_stripe,c_num,c_period,c_stripe)
+b_d = atomic_radius(b_num,b_period,b_stripe,d_num,d_period,d_stripe)
+c_d = atomic_radius(c_num,c_period,c_stripe,d_num,d_period,d_stripe)
