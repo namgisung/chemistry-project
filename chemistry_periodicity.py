@@ -227,7 +227,7 @@ elif a_ratio.count('<') ==1:
 else:
     d_th = 3
 
-total_example= list(range(5))
+total_example= list(range(4))
 total_example[a_th] = a
 total_example[b_th] = b
 total_example[c_th] = c
