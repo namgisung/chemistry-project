@@ -209,11 +209,20 @@ if c_ratio[2] == '>' and b_ratio.count('<') == 2:
     c_th = 1
 elif c_ratio[2] == '>' and b_ratio.count('<') == 1:
     c_th = 2
-elif c_ratio[2] == '<' and b_ratio.count('>') == 3:
+elif c_ratio[2] == '<' and b_ratio.count('<') == 3:
     c_th = 2
-elif c_ratio[2] == '<' and b_ratio.count('>') == 0:
+elif c_ratio[2] == '>' and b_ratio.count('<') == 0:
     c_th = 3
-elif c_ratio[2] == '>' and b_ratio.count('>') == 2:
+elif c_ratio[2] == '<' and b_ratio.count('<') == 2:
     c_th = 3
 else:
     c_th = 4
+
+if d_ratio.count('<') ==3:
+    d_th = 1
+elif d_ratio.count('<') ==2:
+    d_th = 2
+elif a_ratio.count('<') ==1:
+    d_th = 3
+else:
+    d_th = 4
