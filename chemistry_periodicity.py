@@ -161,3 +161,59 @@ a_d = atomic_radius(a_num,a_period,a_stripe,d_num,d_period,d_stripe)
 b_c = atomic_radius(b_num,b_period,b_stripe,c_num,c_period,c_stripe)
 b_d = atomic_radius(b_num,b_period,b_stripe,d_num,d_period,d_stripe)
 c_d = atomic_radius(c_num,c_period,c_stripe,d_num,d_period,d_stripe)
+
+a_ratio = []
+b_ratio = []
+c_ratio = []
+d_ratio = []
+a_ratio.append(a_b)
+a_ratio.append(a_c)
+a_ratio.append(a_d)
+b_ratio.append(a_b)
+b_ratio.append(b_c)
+b_ratio.append(b_d)
+c_ratio.append(a_c)
+c_ratio.append(b_c)
+c_ratio.append(c_d)
+d_ratio.append(a_d)
+d_ratio.append(b_d)
+d_ratio.append(c_d)
+
+a_th = 0
+b_th = 0
+c_th = 0
+d_th = 0
+if a_ratio.count('>') ==3:
+    a_th = 1
+elif a_ratio.count('>') ==2:
+    a_th = 2
+elif a_ratio.count('>') ==1:
+    a_th = 3
+else:
+    a_th = 4
+
+if b_ratio[0] == '<' and b_ratio.count('>') == 2:
+    b_th = 1
+elif b_ratio[0] == '<' and b_ratio.count('>') == 1:
+    b_th = 2
+elif b_ratio[0] == '>' and b_ratio.count('>') == 3:
+    b_th = 2
+elif b_ratio[0] == '<' and b_ratio.count('>') == 0:
+    b_th = 3
+elif b_ratio[0] == '>' and b_ratio.count('>') == 2:
+    b_th = 3
+else:
+    b_th = 4
+
+if c_ratio[2] == '>' and b_ratio.count('<') == 2:
+    c_th = 1
+elif c_ratio[2] == '>' and b_ratio.count('<') == 1:
+    c_th = 2
+elif c_ratio[2] == '<' and b_ratio.count('>') == 3:
+    c_th = 2
+elif c_ratio[2] == '<' and b_ratio.count('>') == 0:
+    c_th = 3
+elif c_ratio[2] == '>' and b_ratio.count('>') == 2:
+    c_th = 3
+else:
+    c_th = 4
