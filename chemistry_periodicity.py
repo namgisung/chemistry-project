@@ -34,23 +34,13 @@ def Zeffl(num):
 
     return Zeff
 
-def second_largest_number(num):
-    second = largest = -float('inf') 
-    
-    for n in num:
-        if n > largest:
-            second = largest
-            largest = n
-        elif second < n < largest:
-            second = n
-
-    return second
-
-def Zeff_graph(Z_second,atomic_t):
+def Zeff_graph(Z_second,atomic_t,title):
     x = np.arange(4)
 
     plt.bar(x, Z_second)
     plt.xticks(x, atomic_t)
+
+    plt.title(title)
 
     plt.show()
 
@@ -93,22 +83,36 @@ def atomic_radius(a_num,a_period,a_stripe,b_num,b_period,b_stripe):
            inequality_sign = ">"
        elif b_num == 4 and 15 <= a_num <= 18:
            inequality_sign = "<"
-       elif a_num == 3 and 13 <= b_num <= 14 :
+       elif a_num == 3 and 13 <= b_num <= 18:
            inequality_sign = ">"
-       elif b_num == 3 and 13 <= a_num <= 14:
+       elif b_num == 3 and 13 <= a_num <= 18:
           inequality_sign = "<"
-       elif a_period ==3 and b_period == 4:
-          inequality_sign = "<"
-       elif b_period ==3 and a_period == 4:
-          inequality_sign = ">"
+       elif a_num == 3 and 11 <= b_num <= 12:
+           inequality_sign = "<"
+       elif b_num == 3 and 11 <= a_num <= 12:
+          inequality_sign = ">" 
+       elif a_period == 2 and b_period == 3:
+           inequality_sign = "<"
+       elif b_period == 2 and a_period == 3:
+          inequality_sign = ">" 
        elif a_period == 4:
           inequality_sign = ">"
        elif b_period == 4:
           inequality_sign = "<"
     return inequality_sign
 
+#이온화 에너지 구하기
+def ionizationl(t):
+    for i in range(1, 21):
+        if t in ionization_data:
+            ionization_number = ionization_data[t]
 
-       
+    return ionization_number
+
+ionization_data = {0:0,1: 1312,2: 2372.5,
+                   3: 520.3, 4:899.5, 5: 800.6, 6: 1086.5, 7: 1402.3, 8: 1313.9, 9: 1681, 10: 2080.7,
+                   11: 495.8, 12: 737.7, 13: 577.5, 14: 786.5, 15: 1011.8, 16: 999.6, 17: 1251.2, 18:1520.6,
+                   19: 418.8, 20:589.8}
 
 
 atomic_data = {'H': 1, 'He': 2, 
@@ -152,7 +156,7 @@ for i in Zeff_total:
 for l in Zeff_total:
     Z_second.append(l[1])
 
-Zeff_graph(Z_second,atomic_t)
+Zeff_graph(Z_second,atomic_t,"effective nuclear charge")
 
 #원자 반지름
 a_b = atomic_radius(a_num,a_period,a_stripe,b_num,b_period,b_stripe)
@@ -189,7 +193,7 @@ elif a_ratio.count('>') ==2:
     a_th = 1
 elif a_ratio.count('>') ==1:
     a_th = 2
-else:
+elif a_ratio.count('>') ==0:
     a_th = 3
 
 if b_ratio[0] == '<' and b_ratio.count('>') == 2:
@@ -202,7 +206,7 @@ elif b_ratio[0] == '<' and b_ratio.count('>') == 0:
     b_th = 2
 elif b_ratio[0] == '>' and b_ratio.count('>') == 2:
     b_th = 2
-else:
+elif b_ratio[0] == '>' and b_ratio.count('>') == 1:
     b_th = 3
 
 if c_ratio[2] == '>' and b_ratio.count('<') == 2:
@@ -215,7 +219,7 @@ elif c_ratio[2] == '>' and b_ratio.count('<') == 0:
     c_th = 2
 elif c_ratio[2] == '<' and b_ratio.count('<') == 2:
     c_th = 2
-else:
+elif c_ratio[2] == '>' and b_ratio.count('>') == 2:
     c_th = 3
 
 if d_ratio.count('<') ==3:
@@ -224,7 +228,7 @@ elif d_ratio.count('<') ==2:
     d_th = 1
 elif a_ratio.count('<') ==1:
     d_th = 2
-else:
+elif a_ratio.count('<') ==0:
     d_th = 3
 
 total_example= list(range(4))
@@ -233,4 +237,40 @@ total_example[b_th] = b
 total_example[c_th] = c
 total_example[d_th] = d
 print(total_example)
-print(total_example[0], ">", total_example[1], ">", total_example[2], ">", total_example[3])
+print("원자 반지름: ",total_example[0], ">", total_example[1], ">", total_example[2], ">", total_example[3])
+
+a_ionization1 = ionizationl(a_num)
+b_ionization1 = ionizationl(b_num)
+c_ionization1 = ionizationl(c_num)
+d_ionization1 = ionizationl(d_num)
+
+ionization_total = [[a,a_ionization1],[b,b_ionization1],[c,c_ionization1],[d,d_ionization1]]
+ionization_total.sort(key=lambda x: -x[1])
+i_range = len(ionization_total)
+ionization_t = []
+i_second = []
+for i in ionization_total:
+    ionization_t.append(i[0])
+for l in ionization_total:
+    i_second.append(l[1])
+
+Zeff_graph(i_second,ionization_t,"1st ionization energy")
+print("1차 이온화 에너지: ",ionization_t[0],">",ionization_t[1],">",ionization_t[2],">",ionization_t[3])
+
+a_ionization2 = ionizationl(a_num - 1)
+b_ionization2 = ionizationl(b_num - 1)
+c_ionization2 = ionizationl(c_num - 1)
+d_ionization2 = ionizationl(d_num - 1)
+
+ionization_total2 = [[a,a_ionization2],[b,b_ionization2],[c,c_ionization2],[d,d_ionization2]]
+ionization_total2.sort(key=lambda x: -x[1])
+i_range = len(ionization_total2)
+ionization_t2 = []
+i_second2 = []
+for i in ionization_total2:
+    ionization_t2.append(i[0])
+for l in ionization_total2:
+    i_second2.append(l[1])
+
+Zeff_graph(i_second2,ionization_t2,"Secondary ionization energy")
+print("2차 이온화 에너지: ",ionization_t2[0],">",ionization_t2[1],">",ionization_t2[2],">",ionization_t2[3])
