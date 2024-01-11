@@ -134,7 +134,7 @@ def reaction(a_mole_ratio, b_mole_ratio, c_mole_ratio):
 
 #화학반응식 입력받기
 ce = input("화학반응식을 입력하세요(_A+_B->_C):")
-q = float(input("제시된 자료를 숫자로 입력하세요(반응 전 A와 B의 양(1), 반응 전과 후 전체 양(2))"))
+q = float(input("제시된 자료를 숫자로 입력하세요(반응 전 A의 양으로 첨가반응물(1), 반응 전과 후 전체 양(2), 반응 전 A와 B의 양(3))"))
 
 #화학반응식 개수비 찾기
 re = ce.split("->")[0]
