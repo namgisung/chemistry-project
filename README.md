@@ -4,5 +4,5 @@
 
 
 
- * periodicity: 원자의 주기성 비교하는 프로그램임
- * quantitative: 양적관계 프로그램임
+ * periodicity: 원자의 주기성 비교하는 프로그램
+ * quantitative: 양적관계 프로그램
