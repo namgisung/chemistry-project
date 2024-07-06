@@ -24,36 +24,33 @@ def predict_chemical_reaction(equilibrium_constant, reaction_index):
     else:
         print("The reaction is at equilibrium.")
 
-def main():
-    num_reactants = int(input("Enter the number of reactants: "))
-    num_products = int(input("Enter the number of products: "))
+num_reactants = int(input("Enter the number of reactants: "))
+num_products = int(input("Enter the number of products: "))
 
-    reactant_concentrations = []
-    reactant_coefficients = []
-    product_concentrations = []
-    product_coefficients = []
+reactant_concentrations = []
+reactant_coefficients = []
+product_concentrations = []
+product_coefficients = []
 
-    print("Enter the concentrations and stoichiometric coefficients for reactants:")
-    for i in range(num_reactants):
-        concentration = float(input(f"Concentration of reactant {i + 1}: "))
-        coefficient = int(input(f"Stoichiometric coefficient of reactant {i + 1}: "))
-        reactant_concentrations.append(concentration)
-        reactant_coefficients.append(coefficient)
+print("Enter the concentrations and stoichiometric coefficients for reactants:")
+for i in range(num_reactants):
+    concentration = float(input(f"Concentration of reactant {i + 1}: "))
+    coefficient = int(input(f"Stoichiometric coefficient of reactant {i + 1}: "))
+    reactant_concentrations.append(concentration)
+    reactant_coefficients.append(coefficient)
 
-    print("Enter the concentrations and stoichiometric coefficients for products:")
-    for i in range(num_products):
-        concentration = float(input(f"Concentration of product {i + 1}: "))
-        coefficient = int(input(f"Stoichiometric coefficient of product {i + 1}: "))
-        product_concentrations.append(concentration)
-        product_coefficients.append(coefficient)
+print("Enter the concentrations and stoichiometric coefficients for products:")
+for i in range(num_products):
+    concentration = float(input(f"Concentration of product {i + 1}: "))
+    coefficient = int(input(f"Stoichiometric coefficient of product {i + 1}: "))
+    product_concentrations.append(concentration)
+    product_coefficients.append(coefficient)
 
-    equilibrium_constant = calculate_equilibrium_constant(reactant_concentrations, product_concentrations, reactant_coefficients, product_coefficients)
-    reaction_index = calculate_reaction_index(reactant_concentrations, product_concentrations, reactant_coefficients, product_coefficients)
+equilibrium_constant = calculate_equilibrium_constant(reactant_concentrations, product_concentrations, reactant_coefficients, product_coefficients)
+reaction_index = calculate_reaction_index(reactant_concentrations, product_concentrations, reactant_coefficients, product_coefficients)
 
-    print("Equilibrium constant:", equilibrium_constant)
-    print("Reaction index:", reaction_index)
+print("Equilibrium constant:", equilibrium_constant)
+print("Reaction index:", reaction_index)
 
-    predict_chemical_reaction(equilibrium_constant, reaction_index)
+predict_chemical_reaction(equilibrium_constant, reaction_index)
 
-if __name__ == "__main__":
-    main()
