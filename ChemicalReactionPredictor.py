@@ -1,15 +1,19 @@
 import math
 
-def calculate_equilibrium_constant(concentrations, stoichiometric_coefficients):
+def calculate_equilibrium_constant(reactant_concentrations, product_concentrations, reactant_coefficients, product_coefficients):
     equilibrium_constant = 1.0
-    for i in range(len(concentrations)):
-        equilibrium_constant *= concentrations[i] ** stoichiometric_coefficients[i]
+    for i in range(len(product_concentrations)):
+        equilibrium_constant *= product_concentrations[i] ** product_coefficients[i]
+    for i in range(len(reactant_concentrations)):
+        equilibrium_constant /= reactant_concentrations[i] ** reactant_coefficients[i]
     return equilibrium_constant
 
-def calculate_reaction_index(concentrations, stoichiometric_coefficients):
+def calculate_reaction_index(reactant_concentrations, product_concentrations, reactant_coefficients, product_coefficients):
     reaction_index = 0.0
-    for i in range(len(concentrations)):
-        reaction_index += stoichiometric_coefficients[i] * math.log(concentrations[i])
+    for i in range(len(product_concentrations)):
+        reaction_index += product_coefficients[i] * math.log(product_concentrations[i])
+    for i in range(len(reactant_concentrations)):
+        reaction_index -= reactant_coefficients[i] * math.log(reactant_concentrations[i])
     return reaction_index
 
 def predict_chemical_reaction(equilibrium_constant, reaction_index):
@@ -21,20 +25,30 @@ def predict_chemical_reaction(equilibrium_constant, reaction_index):
         print("The reaction is at equilibrium.")
 
 def main():
-    num_species = int(input("Enter the number of reactants and products: "))
+    num_reactants = int(input("Enter the number of reactants: "))
+    num_products = int(input("Enter the number of products: "))
 
-    concentrations = []
-    stoichiometric_coefficients = []
+    reactant_concentrations = []
+    reactant_coefficients = []
+    product_concentrations = []
+    product_coefficients = []
 
-    print("Enter the concentrations and stoichiometric coefficients for each species:")
-    for i in range(num_species):
-        concentration = float(input(f"Concentration of species {i + 1}: "))
-        coefficient = int(input(f"Stoichiometric coefficient of species {i + 1}: "))
-        concentrations.append(concentration)
-        stoichiometric_coefficients.append(coefficient)
+    print("Enter the concentrations and stoichiometric coefficients for reactants:")
+    for i in range(num_reactants):
+        concentration = float(input(f"Concentration of reactant {i + 1}: "))
+        coefficient = int(input(f"Stoichiometric coefficient of reactant {i + 1}: "))
+        reactant_concentrations.append(concentration)
+        reactant_coefficients.append(coefficient)
 
-    equilibrium_constant = calculate_equilibrium_constant(concentrations, stoichiometric_coefficients)
-    reaction_index = calculate_reaction_index(concentrations, stoichiometric_coefficients)
+    print("Enter the concentrations and stoichiometric coefficients for products:")
+    for i in range(num_products):
+        concentration = float(input(f"Concentration of product {i + 1}: "))
+        coefficient = int(input(f"Stoichiometric coefficient of product {i + 1}: "))
+        product_concentrations.append(concentration)
+        product_coefficients.append(coefficient)
+
+    equilibrium_constant = calculate_equilibrium_constant(reactant_concentrations, product_concentrations, reactant_coefficients, product_coefficients)
+    reaction_index = calculate_reaction_index(reactant_concentrations, product_concentrations, reactant_coefficients, product_coefficients)
 
     print("Equilibrium constant:", equilibrium_constant)
     print("Reaction index:", reaction_index)
