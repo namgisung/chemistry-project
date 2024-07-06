@@ -18,39 +18,39 @@ def calculate_reaction_index(reactant_concentrations, product_concentrations, re
 
 def predict_chemical_reaction(equilibrium_constant, reaction_index):
     if reaction_index > 0:
-        print("The reaction is spontaneous and will proceed to the right.")
+        print("이 반응은 자발적이고 정방향으로 반응한다.")
     elif reaction_index < 0:
-        print("The reaction is non-spontaneous and will proceed to the left.")
+        print("이 반응은 비자발적이고 역방향으로 반응한다.")
     else:
-        print("The reaction is at equilibrium.")
+        print("평형상태임.")
 
-num_reactants = int(input("Enter the number of reactants: "))
-num_products = int(input("Enter the number of products: "))
+num_reactants = int(input("반응물의 물질 개수: "))
+num_products = int(input("생성물의 물질 개수: "))
 
 reactant_concentrations = []
 reactant_coefficients = []
 product_concentrations = []
 product_coefficients = []
 
-print("Enter the concentrations and stoichiometric coefficients for reactants:")
+print("반응물의 몰농도와 화학양론적 계수를 입력:")
 for i in range(num_reactants):
-    concentration = float(input(f"Concentration of reactant {i + 1}: "))
-    coefficient = int(input(f"Stoichiometric coefficient of reactant {i + 1}: "))
+    concentration = float(input(f"반응물 {i +1}의 몰농도: "))
+    coefficient = int(input(f"반응물 {i + 1}의 화학 양론적 개수: "))
     reactant_concentrations.append(concentration)
     reactant_coefficients.append(coefficient)
 
-print("Enter the concentrations and stoichiometric coefficients for products:")
+print("생성물의 몰농도와 화학양론적 계수를 입력:")
 for i in range(num_products):
-    concentration = float(input(f"Concentration of product {i + 1}: "))
-    coefficient = int(input(f"Stoichiometric coefficient of product {i + 1}: "))
+    concentration = float(input(f"생성물 {i +1}의 몰농도: "))
+    coefficient = int(input(f"생성물 {i +1}의 화학 양론적 개수: "))
     product_concentrations.append(concentration)
     product_coefficients.append(coefficient)
 
 equilibrium_constant = calculate_equilibrium_constant(reactant_concentrations, product_concentrations, reactant_coefficients, product_coefficients)
 reaction_index = calculate_reaction_index(reactant_concentrations, product_concentrations, reactant_coefficients, product_coefficients)
 
-print("Equilibrium constant:", equilibrium_constant)
-print("Reaction index:", reaction_index)
+print("평형 상수:", equilibrium_constant)
+print("반응 지수:", reaction_index)
 
 predict_chemical_reaction(equilibrium_constant, reaction_index)
 
