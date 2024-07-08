@@ -6,6 +6,7 @@
 
  * periodicity: 원자의 주기성 비교하는 프로그램
  * quantitative: 양적관계 프로그램
+ * ChemicalReactionPredict: 평형상수와 반응지수로 방향 예측
 
 
 
