@@ -32,17 +32,17 @@ reactant_coefficients = []
 product_concentrations = []
 product_coefficients = []
 
-print("반응물의 몰농도와 화학양론적 계수를 입력:")
+print("반응물의 평형 농도와 화학 빈응 계수를 입력:")
 for i in range(num_reactants):
-    concentration = float(input(f"반응물 {i +1}의 몰농도: "))
-    coefficient = int(input(f"반응물 {i + 1}의 화학 양론적 개수: "))
+    concentration = float(input(f"반응물 {i +1}의 평형 농도: "))
+    coefficient = int(input(f"반응물 {i + 1}의 화학 반응 개수: "))
     reactant_concentrations.append(concentration)
     reactant_coefficients.append(coefficient)
 
-print("생성물의 몰농도와 화학양론적 계수를 입력:")
+print("생성물의 평형 농도와 화학 반응 계수를 입력:")
 for i in range(num_products):
-    concentration = float(input(f"생성물 {i +1}의 몰농도: "))
-    coefficient = int(input(f"생성물 {i +1}의 화학 양론적 개수: "))
+    concentration = float(input(f"생성물 {i +1}의 평형 농도: "))
+    coefficient = int(input(f"생성물 {i +1}의 화학 반응 개수: "))
     product_concentrations.append(concentration)
     product_coefficients.append(coefficient)
 
