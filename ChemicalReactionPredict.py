@@ -18,9 +18,9 @@ def calculate_reaction_index(reactant_concentrations, product_concentrations, re
 
 def predict_chemical_reaction(equilibrium_constant, reaction_index):
     if reaction_index > 0:
-        print("이 반응은 자발적이고 정방향으로 반응한다.")
+        print("이 반응은 정방향으로 반응한다.")
     elif reaction_index < 0:
-        print("이 반응은 비자발적이고 역방향으로 반응한다.")
+        print("이 반응은 역방향으로 반응한다.")
     else:
         print("평형상태임.")
 
