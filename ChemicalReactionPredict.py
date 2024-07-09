@@ -17,7 +17,7 @@ def calculate_reaction_index(reactant_concentrations, product_concentrations, re
     return reaction_index
 
 def predict_chemical_reaction(equilibrium_constant, reaction_index):
-    if reaction_index < eqilibrium_constant:
+    if reaction_index < equilibrium_constant:
         print("이 반응은 정방향으로 반응한다.")
     elif reaction_index > equilibrium_constant:
         print("이 반응은 역방향으로 반응한다.")
@@ -35,14 +35,14 @@ product_coefficients = []
 print("반응물의 평형 농도와 화학 빈응 계수를 입력:")
 for i in range(num_reactants):
     concentration = float(input(f"반응물 {i +1}의 평형 농도: "))
-    coefficient = int(input(f"반응물 {i + 1}의 화학 반응 개수: "))
+    coefficient = int(input(f"반응물 {i + 1}의 화학 반응 계수: "))
     reactant_concentrations.append(concentration)
     reactant_coefficients.append(coefficient)
 
 print("생성물의 평형 농도와 화학 반응 계수를 입력:")
 for i in range(num_products):
     concentration = float(input(f"생성물 {i +1}의 평형 농도: "))
-    coefficient = int(input(f"생성물 {i +1}의 화학 반응 개수: "))
+    coefficient = int(input(f"생성물 {i +1}의 화학 반응 계수: "))
     product_concentrations.append(concentration)
     product_coefficients.append(coefficient)
 
